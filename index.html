@@ -1,5 +1,10 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
+  <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+  <script src="nav.js"></script>
   <head><script src="./assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
@@ -42,8 +47,34 @@
         /* font-size: 18px; */
       }
 
+      .gallery {
+        cursor: zoom-in;
+      }
+
       .text-title {
         font-size: clamp(1vw, calc(1.3rem + .6vw), 3vw);
+      }
+
+      .modal-button {
+        position: absolute;
+        width: 30vw;
+        height: 100vh;
+        --bs-btn-hover-bg: rgba(92, 99, 106, .5);
+        --bs-btn-bg: rgba(108, 117, 126, 0.3);
+        --bs-btn-active-bg: rgba(86, 94, 103, .7);
+      }
+
+      .btn:focus, .btn:active, button:focus, button:active {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+
+      #image-gallery .modal-footer{
+        display: block;
+      }
+      
+      #image-gallery-image {
+        width: 100%;
       }
 
       @media (min-width: 768px) {
@@ -242,13 +273,17 @@
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div> -->
   </div>
 
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+  <div class="d-md-flex flex-md-equal w-100 ps-md-3">
+    <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 pb-3 text-center overflow-hidden">
       <div class="my-3 py-3">
-        <h2 class="display-5">About</h2>
-        <p class="lead">Parasync is a deckbuilding puzzle roguelike about collecting parasites and cramming enough of them in your brain to activate frightening attacks</p>
+        <h2 class="display-5">Parasync - Supporting Material </h2>
+        <p class="lead"></p>
       </div>
-      <img src="./images/newerGrove.gif" alt="Girl in a jacket" width="500">
+      <a class="thumbnail" href="#" data-image-id="" data-bs-toggle="modal" data-bs-target="#image-gallery" data-title=""
+                   data-image="./images/newerGrove.gif"
+                   data-target="#image-gallery">
+      <img class="gallery" src="./images/newerGrove.gif" alt="Girl in a jacket" width="500">
+      </a>
       <!-- <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
     </div>
     <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
@@ -256,7 +291,11 @@
         <h2 class="display-5">Enemy attack</h2>
         <p class="lead">Enemies mark where they will attack and infect at the end of your turn.</p>
       </div>
-      <img src="./images/enemyAttack.gif" alt="Girl in a jacket" width="500">
+      <a class="thumbnail" href="#" data-image-id="" data-bs-toggle="modal" data-bs-target="#image-gallery" data-title=""
+                   data-image="./images/enemyAttack.gif"
+                   data-target="#image-gallery">
+      <img class="gallery" src="./images/enemyAttack.gif" alt="Girl in a jacket" width="500">
+      </a>
       <!-- <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
     </div>
   </div>
@@ -312,6 +351,48 @@
       <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
   </div>
+
+  <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <button type="button" class="btn btn-secondary float-left modal-button" id="show-previous-image" style=""> 
+      <div style=" width: 15%;">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="50%" viewBox="0 0 1000 1000" xml:space="preserve">
+          <rect x="0" y="0" width="100%" height="100%" fill="rgba(0,0,0,0)"></rect>
+          <g transform="matrix(-79.934 0 0 57.4251 499.9999 500.5003)" id="94841">
+          <polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" points="-5.0605,-7.293 2.2325,0 -5.0605,7.293 -3.6465,8.707 5.0605,0 -3.6465,-8.707 -5.0605,-7.293 "></polygon>
+          </g>
+        </svg>
+      </div>
+    </button>
+    <button type="button" class="btn btn-secondary float-left modal-button" id="show-next-image" style="right: 0;"> 
+      <div style=" width: 15%; margin-left: auto;">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="50%" viewBox="0 0 1000 1000" xml:space="preserve">
+          <rect x="0" y="0" width="100%" height="100%" fill="rgba(0,0,0,0)"></rect>
+          <g transform="matrix(79.934 0 0 57.4251 499.9999 500.5003)" id="94841">
+          <polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" points="-5.0605,-7.293 2.2325,0 -5.0605,7.293 -3.6465,8.707 5.0605,0 -3.6465,-8.707 -5.0605,-7.293 "/>
+          </g>
+        </svg>
+      </div>
+    </button>
+    <div class="modal-dialog modal-xl mt-3 mb-2">
+        <div class="modal-content">
+            <div class="modal-header p-0 flex-column justify-content-end align-items-end">
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+                <button type="button" class="close" data-bs-dismiss="modal" style="border: none; background-color: inherit;"><span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body p-0">
+                <img id="image-gallery-image" class="img-responsive col-md-12" src="">
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary float-left" id="show-previous-image"><i class="fa fa-arrow-left"></i>
+                </button>
+
+                <button type="button" id="show-next-image" class="btn btn-secondary float-right"><i class="fa fa-arrow-right"></i>
+                </button>
+            </div> -->
+        </div>
+    </div>
+</div>
 </main>
 
 <!-- <footer class="container py-5">
